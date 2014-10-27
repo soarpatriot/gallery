@@ -1,5 +1,5 @@
 class Picture < ActiveRecord::Base
-  attr_accessible :description, :gallery_id, :image, :crop_x, :crop_y, :crop_w, :crop_h, :gallery_token
+  # attr_accessible :description, :gallery_id, :image, :crop_x, :crop_y, :crop_w, :crop_h, :gallery_token
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
   belongs_to :gallery

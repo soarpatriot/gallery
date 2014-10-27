@@ -27,7 +27,9 @@ class GalleriesController < ApplicationController
   def new
     @gallery = Gallery.new
     @gallery.token = @gallery.generate_token
-    @picture = @gallery.pictures.build
+
+    # @picture = @gallery.pictures.build(create_at:Time.now)
+    @picture = Picture.new(gallery:@gallery)
     @pictures = []
 
     respond_to do |format|
@@ -46,7 +48,7 @@ class GalleriesController < ApplicationController
   # POST /galleries
   # POST /galleries.json
   def create
-    @gallery = Gallery.new(params[:gallery])
+    @gallery = Gallery.new picture_params
     @pictures = Picture.where(:gallery_token => @gallery.token)
     @gallery.pictures << @pictures
 
@@ -87,5 +89,9 @@ class GalleriesController < ApplicationController
       format.html { redirect_to galleries_url }
       format.json { head :no_content }
     end
+  end
+
+  def picture_params
+    params.require(:gallery).permit(:id,:cover, :description, :name, :token,:image)
   end
 end

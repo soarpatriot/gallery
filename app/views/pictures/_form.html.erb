@@ -24,6 +24,7 @@
 <script type="text/javascript" charset="utf-8">
     $(function () {
       $('#make_default').click(function(event) {
+        console.log("sdfasdfasd: " + <%= @gallery.id %>)
         event.preventDefault();
         $.ajax({
           url: '<%= make_default_gallery_pictures_path %>',

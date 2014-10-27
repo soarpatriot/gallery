@@ -23,6 +23,7 @@
 
 <%= form_for @picture, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
   <div class="row">
+    <%= f.hidden_field :gallery_id, value: @gallery.id %>
     <%= f.hidden_field :gallery_token, value: @gallery.token %>
 
     <div class=" fileupload-buttonbar">

@@ -25,11 +25,11 @@
 //= require jquery.fileupload-ip
 //= require jquery.fileupload-ui
 //= require locale
-//= require main
 
 //= require pictures
-
 //= require slimbox2
-
-//= require twitter/bootstrap
+//= require bootstrap
 //= require bootstrap-image-gallery.min
+//= require main
+
+

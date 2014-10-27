@@ -52,8 +52,9 @@ $(function () {
     },
 
     completed: function(e, data) {
-      console.log(data.result[0].url);
-      $('a[href^="' + data.result[0].url + '"]').slimbox();
+      console.log(data);
+        $('a[href^="' + data.url + '"]').slimbox();
+      //$('a[href^="' + data.result[0].url + '"]').slimbox();
     },
     downloadTemplate: function (o) {
         var rows = $();

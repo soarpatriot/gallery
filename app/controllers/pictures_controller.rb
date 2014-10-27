@@ -47,12 +47,12 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.json
   def create
-    p_attr = params[:picture]
-    p_attr[:image] = params[:picture][:image].first if params[:picture][:image].class == Array
+    p_attr = picture_params
+    p_attr[:image] = picture_params[:image].first if picture_params[:image].class == Array
 
     if params[:gallery_id]
-      @gallery = Gallery.find(params[:gallery_id])
-      @picture = @gallery.pictures.build(p_attr)
+      @gallery = Gallery.find(picture_params[:gallery_id])
+      @picture = @gallery.pictures.create(p_attr)
     else
       @picture = Picture.new(p_attr)
     end
@@ -115,5 +115,9 @@ class PicturesController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def picture_params
+    params.require(:picture).permit(:id,:description, :gallery_id,  :crop_x, :crop_y, :crop_w, :crop_h, :gallery_token,:image=>[])
   end
 end

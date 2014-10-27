@@ -1,5 +1,6 @@
 class Gallery < ActiveRecord::Base
-  attr_accessible :cover, :description, :name, :token
+
+  # attr_accessor :cover, :description, :name, :token
 
   has_many :pictures, :dependent => :destroy
 
